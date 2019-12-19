@@ -1,0 +1,6 @@
+.Enemies {
+    position: relative;
+    border: 1px solid salmon;
+    width : 3rem;
+    height: 3rem;
+}
