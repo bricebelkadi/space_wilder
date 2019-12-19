@@ -7,11 +7,19 @@ const mapStateToProps = state => {
     return { data: state };
 };
 
+const mapDispatchToProps = dispatch => ({
+    reset: () => dispatch({ type: 'RESET' }),
+    rightLaser: () => dispatch({ type: 'RIGHT_LASER' }),
+    fire: () => dispatch({type: "FIRE"}),
+});
 
 
 
 
-function Laser ({data, stopFire}) {
+
+
+
+function Laser ({data, stopFire, reset, rightLaser, fire}) {
 
     const [x, setX] = useState(data.x);
     const [count, setCount] = useState(0)
@@ -19,14 +27,17 @@ function Laser ({data, stopFire}) {
     const MoveLaser = () => {
         if (count === 50) {
             stopFire();
+            reset();
+            fire();
         }
+        rightLaser();
         setCount(count + 1);
         setX(x + 1)
     }
 
     useInterval(() => {
         MoveLaser();
-    }, 1);
+    }, 10);
 
 
     return (
@@ -40,4 +51,5 @@ function Laser ({data, stopFire}) {
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
 )(Laser);

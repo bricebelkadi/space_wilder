@@ -9,13 +9,17 @@ const mapStateToProps = state => {
 
 
 
-function Enemies(props) {
+function Enemies({ xProp, yProp, name, data }) {
 
-    const [x, setX] = useState(props.x);
-    const [y, setY] = useState(props.y);
+    const [x, setX] = useState(xProp);
+    const [y, setY] = useState(yProp);
     const [cycle, setCycle] = useState(0);
 
     const MoveYourself = () => {
+        if ((data.xLaser >= x) && (data.yLaser >= y - 1 & data.yLaser <= y + 1) && data.fire) {
+            alert("touche");
+            
+        }
         if (cycle === 10) {
             setCycle(0, () => {
                 setX(x + 1);
@@ -42,11 +46,14 @@ function Enemies(props) {
         <div className="Enemies"
             style={{ top: `${y}rem`, left: `${x}rem`, }}
         >
-            je suis {props.name}
+            je suis {name}
             <p>cycle{cycle}</p>
         </ div>
     )
 
 }
 
-export default Enemies;
+
+export default connect(
+    mapStateToProps,
+)(Enemies);

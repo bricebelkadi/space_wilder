@@ -54,7 +54,7 @@ function Main() {
     return (
         <div className="Main">
             {
-                allMonster.map(monstre => <Enemies name={monstre.name} x={monstre.x} y={monstre.y} />)
+                allMonster.map(monstre => <Enemies name={monstre.name} xProp={monstre.x} yProp={monstre.y} />)
             }
 
             <Player action={launchFire} />

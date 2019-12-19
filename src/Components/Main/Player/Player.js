@@ -2,6 +2,7 @@ import React, { useState, } from 'react';
 import useEventListener from '@use-it/event-listener';
 import { connect } from "react-redux";
 import './Player.css';
+import { fireEvent } from '@testing-library/dom';
 
 const mapStateToProps = state => {
     return { data: state };
@@ -12,6 +13,8 @@ const mapDispatchToProps = dispatch => ({
     down: () => dispatch({ type: 'DOWN' }),
     left: () => dispatch({ type: 'LEFT' }),
     right: () => dispatch({ type: 'RIGHT' }),
+    fire: () => dispatch({type: "FIRE"}),
+
 
 });
 
@@ -21,7 +24,7 @@ const Q = ['81', 'q'];
 const D = ['68', 'd'];
 const Space = ['32', ' '];
 
-function Player({ data, up, action, down, right, left }) {
+function Player({ data, up, action, down, right, left , fire}) {
 
     const [x, setX] = useState(data.x);
     const [y, setY] = useState(data.y);
@@ -35,7 +38,7 @@ function Player({ data, up, action, down, right, left }) {
         setY(y+1);
     }
     const moveLeftQ = () => {
-        right();
+        left();
         setX(x - 1);
     };
     const moveRightD = () => {
@@ -46,6 +49,7 @@ function Player({ data, up, action, down, right, left }) {
 
     const playerFire = () => {
         action();
+        fire();
     }
 
     function handler({ key }) {
