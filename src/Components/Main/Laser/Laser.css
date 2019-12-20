@@ -1,6 +1,7 @@
 .Laser {
     position: absolute;
-    border: 1px solid salmon;
     width : 3rem;
     height: 3rem;
+    display: flex;
+    align-items: center;
 }

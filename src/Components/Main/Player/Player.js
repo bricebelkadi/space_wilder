@@ -2,7 +2,7 @@ import React, { useState, } from 'react';
 import useEventListener from '@use-it/event-listener';
 import { connect } from "react-redux";
 import './Player.css';
-import { fireEvent } from '@testing-library/dom';
+import SpaceShip from '../../../Assets/spaceShipPlayer.png'
 
 const mapStateToProps = state => {
     return { data: state };
@@ -65,9 +65,8 @@ function Player({ data, up, action, down, right, left , fire}) {
 
     return (
         <div className="Player"
-            style={{ top: `${y}rem`, left: `${x}rem`, }}
+            style={{ top: `${y}rem`, left: `${x}rem`, backgroundImage: `url(${SpaceShip})`, backgroundSize: "contain", backgroundRepeat: "no-repeat"}}
         >
-            C'est moi
         </div>
 
     )

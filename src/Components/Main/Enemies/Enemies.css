@@ -1,6 +1,12 @@
 .Enemies {
     position: absolute;
-    border: 1px solid salmon;
-    width : 3rem;
-    height: 3rem;
+    width : 4rem;
+    height: 4rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.Enemies img {
+    object-fit: cover;
 }

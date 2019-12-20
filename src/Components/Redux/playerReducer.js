@@ -4,6 +4,8 @@ const playerReducer = (state = {
   xLaser: 10,
   yLaser: 10,
   fire: false,
+  count: 0,
+  speed: 100
 }, action) => {
   switch (action.type) {
     case "UP":
@@ -32,6 +34,15 @@ const playerReducer = (state = {
     case "FIRE":
       state.fire = !state.fire;
       return state;
+    case "COUNT_UP":
+      state.count++
+      return state;
+    case "SPEED_UP":
+      if (state.speed -8 > 0) {
+        state.speed -= 8
+      }
+      return state;
+
 
     default:
       return state;
