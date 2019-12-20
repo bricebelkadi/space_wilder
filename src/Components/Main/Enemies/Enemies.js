@@ -9,16 +9,16 @@ const mapStateToProps = state => {
 
 
 
-function Enemies({ xProp, yProp, name, data }) {
+function Enemies({ xProp, yProp, data, killed, monsterId}) {
 
     const [x, setX] = useState(xProp);
     const [y, setY] = useState(yProp);
     const [cycle, setCycle] = useState(0);
 
+    
     const MoveYourself = () => {
-        if ((data.xLaser >= x) && (data.yLaser >= y - 1 & data.yLaser <= y + 1) && data.fire) {
-            alert("touche");
-            
+        if (data.fire && (data.xLaser >= x) && (data.yLaser >= y - 1 && data.yLaser <= y + 1)) {
+            killed(monsterId);
         }
         if (cycle === 10) {
             setCycle(0, () => {
@@ -38,15 +38,18 @@ function Enemies({ xProp, yProp, name, data }) {
         setCycle(cycle + 1)
     }
 
+    
     useInterval(() => {
         MoveYourself();
     }, 100);
 
+    
+    
     return (
-        <div className="Enemies"
+        <div className="Enemies" 
             style={{ top: `${y}rem`, left: `${x}rem`, }}
         >
-            je suis {name}
+            Monstre
             <p>cycle{cycle}</p>
         </ div>
     )
